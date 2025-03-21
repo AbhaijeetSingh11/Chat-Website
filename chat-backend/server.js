@@ -16,6 +16,7 @@ console.log("MongoDB URI:", process.env.MONGO_URI);
 app.get('/messages', async (req,res)=>{
     try{
         const messages = await ChatMessage.find();
+        console.log(messages);
         res.json(messages);
     } catch(error){
         console.log(error);
@@ -36,7 +37,7 @@ app.post('/messages', async(req,res)=>{
             message,
         });
 
-        await ChatMessage.save();
+        await chatMessage.save();
         res.json(chatMessage);
     } catch (error){
         console.error(error);
